@@ -8,6 +8,11 @@
 </head>
 <body>
 
+    <!-- 頂部導覽列 / 右上角超連結容器 -->
+    <nav class="top-nav">
+        <a href="#" id="openStoryMap" class="nav-link">生態Story Map導覽</a>
+    </nav>
+
     <!-- Hero Section 主視覺區 -->
     <header class="hero">
         <div class="hero-content">
@@ -80,13 +85,41 @@
 
     <iframe src="https://www.google.com/maps/d/embed?mid=1BMc0dSwk1u_yY510H0iqm1CJ31PL8JQ&ehbc=2E312F" width="100%" height="800px"></iframe>
 
-
-
+    <!-- Story Map 彈跳視窗 (Modal) -->
+    <div id="storyMapModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="iframe-container">
+                <iframe src="https://uploads.knightlab.com/storymapjs/abed654e718a6fb282f472c4551e26fa/tai-zhong-sheng-tai-yi-ri-you/index.html" frameborder="0" width="100%" height="100%"></iframe>
+            </div>
+        </div>
+    </div>
 
     <!-- 頁尾 -->
     <footer>
         <p>&copy; 2026 台中景點推薦網頁</p>
     </footer>
 
+    <!-- JavaScript 互動邏輯 -->
+    <script>
+        const modal = document.getElementById('storyMapModal');
+        const btn = document.getElementById('openStoryMap');
+        const span = document.getElementsByClassName('close-btn')[0];
+
+        btn.onclick = function(e) {
+            e.preventDefault();
+            modal.style.display = 'block';
+        }
+
+        span.onclick = function() {
+            modal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
